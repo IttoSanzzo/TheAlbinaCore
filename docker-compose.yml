@@ -1,0 +1,76 @@
+services:
+  albina-online:
+    container_name: albina-online
+    build:
+      context: ./AlbinaOnline
+      dockerfile: Dockerfile.dev
+    ports:
+      - "11759:11759"
+    volumes:
+      - ./AlbinaOnline:/app
+      - /app/node_modules
+    env_file:
+      - ./AlbinaOnline/.env
+    depends_on:
+      - albina-api
+    restart: always
+
+  albina-api:
+    container_name: albina-api
+    build:
+      context: ./AlbinaApi
+      dockerfile: Dockerfile.dev
+    develop:
+      watch:
+        - action: sync
+          path: ./
+          target: /app
+    ports:
+      - "11750:11750"
+    volumes:
+      - ./AlbinaMediaBd:/localstorage
+      - /home/Itto/.AlbinaOnlineSecrets/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+      - /home/Itto/.AlbinaOnlineSecrets/pfx/dataprotection.pfx:/app/secrets/datakey.pfx
+    env_file:
+      - ./AlbinaApi/.env
+      - ./enviroment-files/.env.database
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_ENVIRONMENT=Development
+      - PFX_LOCATION=/app/secrets/datakey.pfx
+      - KEYS_LOCATION=/root/.aspnet/DataProtection-Keys
+    depends_on:
+      - albina-db
+    restart: always
+
+  albina-db:
+    image: postgres:16
+    container_name: albina-db
+    ports:
+      - "6543:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    env_file:
+      - ./enviroment-files/.env.database
+    restart: always
+
+  albina-pgadmin:
+    image: dpage/pgadmin4
+    container_name: albina-pgadmin
+    ports:
+      - "16543:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    env_file:
+      - ./enviroment-files/.env.pgadmin
+    depends_on:
+      - albina-db
+    restart: always
+
+volumes:
+  postgres-data:
+    external: true
+    name: albina-db-v2
+  pgadmin-data:
+    external: true
+    name: albina-pgadmin-v1

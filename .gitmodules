@@ -1,0 +1,9 @@
+[submodule "AlbinaApi"]
+	path = AlbinaApi
+	url = git@github.com:IttoSanzzo/AlbinaApi.git
+[submodule "AlbinaOnline"]
+	path = AlbinaOnline
+	url = git@github.com:IttoSanzzo/AlbinaOnline.git
+[submodule "AlbinaMediaBd"]
+	path = AlbinaMediaBd
+	url = git@github.com:IttoSanzzo/AlbinaMediaBd.git

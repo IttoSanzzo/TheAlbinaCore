@@ -1,0 +1,28 @@
+TheAlbinaCore License (2025) — Itto Sanzzo
+
+**Preamble**
+This LICENSE applies to TheAlbinaCore and all of its composing parts, including but not limited to orchestration files, Docker configurations, environment definitions, and related infrastructure that manages the Albina Online ecosystem. It covers every repository and submodule orchestrated under TheAlbinaCore.
+
+1. **Permission to Access**
+   You are permitted to view, study, and experiment with this repository for educational or exploratory purposes only.
+
+2. **Restrictions**
+
+- You may **not** clone, redistribute, or use any part of TheAlbinaCore — including but not limited to AlbinaOnline and AlbinaApi — privately or commercially without explicit written consent from the author.
+- Modifying or adapting this repository for personal deployment or public distribution is strictly prohibited.
+- The project depends on private APIs, databases, and proprietary services that are not included in this repository.
+
+3. **Intended Use**
+   TheAlbinaCore is intended for personal and private use among members of the Setsu TeaParty. Together with its submodules, it serves as the central orchestration layer for:
+
+   - Running Albina Online services and applications through Docker.
+   - Managing submodules such as AlbinaApi, AlbinaOnline, and related projects.
+   - Providing a unified infrastructure for development and testing.
+   - Safe experimentation by interested parties under direct communication with the author.
+   - Any use outside the scope defined in this license requires prior written agreement with the author.
+
+4. **Disclaimer**
+   This project is provided "as-is" without warranty of any kind. The author is not responsible for any consequences resulting from unauthorized use, deployment, or adaptation.
+
+5. **Contact**
+   For inquiries, experimentation requests, or collaborations, please contact the author directly.

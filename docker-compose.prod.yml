@@ -3,12 +3,9 @@ services:
     container_name: albina-online
     build:
       context: ./AlbinaOnline
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     ports:
       - "11759:11759"
-    volumes:
-      - ./AlbinaOnline:/app
-      - /app/node_modules
     env_file:
       - ./AlbinaOnline/.env
       - ./AlbinaOnline/.env.local
@@ -20,12 +17,7 @@ services:
     container_name: albina-api
     build:
       context: ./AlbinaApi
-      dockerfile: Dockerfile.dev
-    develop:
-      watch:
-        - action: sync
-          path: ./AlbinaApi
-          target: /app
+      dockerfile: Dockerfile.prod
     ports:
       - "11750:11750"
     volumes:
@@ -36,8 +28,6 @@ services:
       - ./AlbinaApi/.env
       - ./enviroment-files/.env.database
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - DOTNET_ENVIRONMENT=Development
       - KEYS_LOCATION=/root/.aspnet/DataProtection-Keys
       - PFX_LOCATION=/app/secrets/datakey.pfx
     depends_on:

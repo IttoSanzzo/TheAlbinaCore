@@ -26,6 +26,8 @@ services:
         - action: sync
           path: ./AlbinaApi
           target: /app
+          ignore:
+            - node_modules/
     ports:
       - "11750:11750"
     volumes:

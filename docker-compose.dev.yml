@@ -32,8 +32,8 @@ services:
       - "11750:11750"
     volumes:
       - ./AlbinaMediaBd:/localstorage
-      - /home/Itto/.AlbinaOnlineSecrets/DataProtection-Keys:/root/.aspnet/DataProtection-Keys:ro
-      - /home/Itto/.AlbinaOnlineSecrets/pfx/dataprotection.pfx:/app/secrets/datakey.pfx:ro
+      - /home/Itto/.AlbinaOnlineSecrets/DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+      - /home/Itto/.AlbinaOnlineSecrets/pfx/dataprotection.pfx:/app/secrets/datakey.pfx
     env_file:
       - ./AlbinaApi/.env
       - ./enviroment-files/.env.database

@@ -1,3 +1,4 @@
 **/.env
 **/.env.*
 .vscode.code-workspace
+.backup-bd.sh
